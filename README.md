@@ -1,4 +1,4 @@
-# cli for generating asset manifests. based on gulp-rev, and uses the rev- modules for the hashing algo.
+# Filterable config store, based on Hapijs Confidence
 
 [![Dependency Status](https://david-dm.org/kellyrmilligan/conf-store.svg)](https://david-dm.org/kellyrmilligan/conf-store)
 [![Build Status](https://travis-ci.org/kellyrmilligan/conf-store.svg?branch=master)](https://travis-ci.org/kellyrmilligan/conf-store)
