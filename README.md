@@ -22,6 +22,5 @@ const config = {
 const store = new Store(config)
 const manifest = store.get('/', { env: process.env.NODE_ENV })
 export default manifest
-
 //manifest is an object filtered by NODE_ENV in this example
 ```
