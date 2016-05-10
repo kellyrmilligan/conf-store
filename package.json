@@ -1,6 +1,6 @@
 {
   "name": "conf-store",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "port of hapijs confidence, specifically the store module(majority of the functionality) with just lodash as a dependency",
   "keywords": "config, confidence, store",
   "main": "./lib/index.js",
