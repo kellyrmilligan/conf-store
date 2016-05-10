@@ -4,28 +4,39 @@
   "description": "port of hapijs confidence, specifically the store module(majority of the functionality) with just lodash as a dependency",
   "keywords": "config, confidence, store",
   "main": "./lib/index.js",
+  "bin": {
+    "confStore": "./lib/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kellyrmilligan/conf-store.git"
   },
   "scripts": {
-    "test": "npm-run-all clean lint babel babel-test lab",
-    "watch-test": "onchange 'src/*.es6' 'test/*.es6' -i -- npm test",
+    "test": "npm-run-all clean lint babel babel-test babel-fixtures lab",
+    "watch-test": "onchange 'src/*.es6' 'test/*.es6' 'fixtures/*.es6' -i -- npm test",
     "lab": "lab -c -C -r tap -o stdout -r html -o coverage.html",
     "lab-coveralls": "lab -r lcov | ./node_modules/.bin/coveralls",
     "clean": "rm -rf ./lib",
     "lint": "eslint src/ --ignore-path .gitignore",
     "watch-lint": "onchange 'src/*.es6' -i -- npm run lint",
+    "watch-fixtures": "onchange 'fixtures/*.es6' -i -- npm run babel-fixtures",
     "babel": "babel src -d lib -D --source-maps",
     "babel-test": "babel test -d test -D --source-maps",
+    "babel-fixtures": "babel fixtures -d fixtures -D --source-maps",
     "watch-babel": "babel src -d lib -w -D --source-maps",
     "build": "npm-run-all clean lint babel",
-    "dev": "npm-run-all clean --parallel watch-lint watch-babel"
+    "prepublish": "npm run build",
+    "dev": "npm-run-all clean --parallel watch-lint watch-fixtures watch-babel"
   },
   "author": "Kelly Milligan",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.11.2"
+    "debug": "^2.2.0",
+    "fs-extra": "^0.30.0",
+    "jsonfile": "^2.3.0",
+    "lodash": "^4.11.2",
+    "try-require": "^1.2.1",
+    "yargs": "^4.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.7.7",
