@@ -18,16 +18,17 @@ const argv = yargs
   .demand(['p','f', 'o'])
   .demand(1)
   .argv
-logDebug(argv)
+logDebug('args: ', argv)
 
 let store = tryRequire(path.resolve(argv._[0]))
-logDebug(store)
+logDebug('path: ', path.resolve(argv._[0]))
+logDebug('store: ', store)
 
 if (!store) {
   exit('Err: path to store not found')
 }
 
-store = store.default
+store = store.default ? store.default : store
 
 const filterParts = argv.f.split('=')
 const filter = {
