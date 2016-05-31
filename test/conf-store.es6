@@ -115,9 +115,9 @@ describe('get()', () => {
 
             const resultApplied = [];
             const value = store.get(key, criteria, applied ? resultApplied : null);
-            expect(value).to.deep.equal(result);
+            expect(value).to.equal(result);
             if (applied) {
-                expect(resultApplied).to.deep.equal(applied);
+                expect(resultApplied).to.equal(applied);
             }
             done();
         });
@@ -162,7 +162,7 @@ describe('meta()', () => {
 
         const store = new ConfStore();
         store.load(tree);
-        expect(store.meta('/')).to.deep.equal(tree.$meta);
+        expect(store.meta('/')).to.equal(tree.$meta);
         done();
     });
 
@@ -455,7 +455,7 @@ it('accepts a document object in the constructor', (done) => {
 
     ConfStore.prototype.load = function (document) {
 
-        expect(document).to.deep.equal(tree);
+        expect(document).to.equal(tree);
         ConfStore.prototype.load = load;
         done();
     };
