@@ -2,38 +2,8 @@ import _cloneDeep from 'lodash/cloneDeep'
 import _merge from 'lodash/merge'
 import _concat from 'lodash/concat'
 import _get from 'lodash/get'
+import logApplied from './log-applied'
 
-// Exported to make testing easier
-export function _logApplied(applied, filter, node, criterion) {
-
-    if (!applied) {
-        return
-    }
-
-    const record = {
-        filter: filter
-    }
-
-    if (criterion) {
-        if (typeof criterion === 'object') {
-            if (criterion.id) {
-                record.valueId = criterion.id
-            }
-            else {
-                record.valueId = (typeof criterion.value === 'object' ? '[object]' : criterion.value.toString())
-            }
-        }
-        else {
-            record.valueId = criterion.toString()
-        }
-    }
-
-    if (node && node.$id) {
-        record.filterId = node.$id
-    }
-
-    applied.push(record)
-}
 
 // Applies criteria on an entire tree
 function _walk(node, criteria, applied) {
@@ -89,13 +59,13 @@ function _filter(node, criteria, applied) {
         if (node.$range) {
             for (let i = 0; i < node.$range.length; ++i) {
                 if (criterion <= node.$range[i].limit) {
-                    _logApplied(applied, filter, node, node.$range[i])
+                    logApplied(applied, filter, node, node.$range[i])
                     return _filter(node.$range[i].value, criteria, applied)
                 }
             }
         }
         else if (node[criterion] !== undefined) {
-            _logApplied(applied, filter, node, criterion)
+            logApplied(applied, filter, node, criterion)
             return defaults(_filter(node[criterion], criteria, applied), node.$base)
         }
 
@@ -103,11 +73,11 @@ function _filter(node, criteria, applied) {
     }
 
     if (node.hasOwnProperty('$default')) {
-        _logApplied(applied, filter, node, '$default')
+        logApplied(applied, filter, node, '$default')
         return defaults(_filter(node.$default, criteria, applied), node.$base)
     }
 
-    _logApplied(applied, filter, node)
+    logApplied(applied, filter, node)
     return undefined
 }
 

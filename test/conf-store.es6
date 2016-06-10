@@ -2,7 +2,7 @@
 import Code from 'code'
 import Lab from 'lab'
 import ConfStore from '../lib/index'
-import { _logApplied } from '../lib/index'
+import logApplied from '../lib/log-applied'
 
 const lab = exports.lab = Lab.script();
 const expect = Code.expect;
@@ -437,13 +437,13 @@ describe('validate()', () => {
     });
 });
 
-describe('_logApplied', () => {
+describe('logApplied', () => {
 
     it('adds the filter to the list of applied filters if node or criteria is not defined ', (done) => {
 
         const applied = [];
 
-        _logApplied(applied, { filter: 'env', valueId: '$default' });
+        logApplied(applied, { filter: 'env', valueId: '$default' });
         expect(applied.length).to.equal(1);
         done();
     });
