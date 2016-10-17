@@ -36,7 +36,7 @@
     "jsonfile": "^2.3.0",
     "lodash": "^4.11.2",
     "try-require": "^1.2.1",
-    "yargs": "^4.7.0"
+    "yargs": "^6.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.7.7",
