@@ -34,7 +34,7 @@
     "debug": "^2.2.0",
     "fs-extra": "^0.30.0",
     "jsonfile": "^2.3.0",
-    "lodash": "^4.11.2",
+    "lodash": "^4.16.5",
     "try-require": "^1.2.1",
     "yargs": "^4.7.0"
   },
