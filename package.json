@@ -47,7 +47,7 @@
     "coveralls": "^2.11.9",
     "eslint": "^2.9.0",
     "eslint-watch": "^2.1.10",
-    "lab": "^10.2.0",
+    "lab": "^11.2.1",
     "npm-run-all": "^2.1.1",
     "onchange": "^2.4.0"
   }
